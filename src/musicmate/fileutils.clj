@@ -42,13 +42,15 @@
 
 ;;;; Stuff to deal with bits and bytes ;;;;
 
+;; grabs the bit at the provided
+;; bit position
 (defn getbit [byte bit]
   (if (> (bit-and
           (bit-shift-right byte bit) 1)
          0) 1 0))
 
 ;; bitme helper
-(defn bmHlp [byte bit lst]
+(defn bitmeHlp [byte bit lst]
   (let [rslt (getbit byte bit)]
     (if (< bit 8)
       (recur byte (inc bit) (conj lst rslt))
@@ -59,7 +61,7 @@
 ;; bit will be on the left and not
 ;; the right
 (defn bitme [byte]
-  (bmHlp byte 0 '()))  
+  (bitmeHlp byte 0 '()))  
 
 ;; takes a list of bytes and
 ;; returns a list of bits that
