@@ -65,4 +65,4 @@
 ;; returns a list of bits that
 ;; represent the bytes
 (defn getbits [bytes]
-  (map bitme bytes))
+  (mapcat bitme bytes))
